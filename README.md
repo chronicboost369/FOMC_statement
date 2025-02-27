@@ -8,3 +8,9 @@ This project explores whether data from FOMC press releases can be harnessed to 
 
 ## Data
 
+For this data science project, we scraped data directly from the Federal Reserve website, covering the period from 2000 to 2025. Although the Fed typically conducts eight scheduled meetings annually, variations in URL formats across different batches of press releases limited our scrape to 81 documents. The collected data spans from April 2011 to January 2025, forming the foundation for our analysis.
+
+To preprocess the text data, after removing stop words, bag of words method is first utilized to evaulate most commonly used words. During this process words like "forward", "thank", and "would" are removed as they are commonly used but doesn't really contain any value. Then, TF-IDF (Term Frequency - Inverse Document Frequency) method is used to transform text data to numeric values.
+Such method is chosen to remove commonly used words across press releases as it penealizes the more commonly used terms.
+
+For the response variable, QQQ, NASDAQ 100 ETF, 1 day performance (FOMC press release date + 1 day close price / press releaste date close price) is utilized. QQQ is chosen for simplicity since it is almost perfectly corrleated to NASDAQ 100 index. MASDAQ 100 is chosen over S&P500 or DOW Jones because it is consist of stocks that are more sensitive to economic conditions. Finally, 1 day performance is evaluated to separate from impactful news that could be concidentally released around FOMC meetings. 
