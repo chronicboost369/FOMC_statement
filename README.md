@@ -28,6 +28,7 @@ Parameters
   2.L2 penalty: [0.1, 1.0, 10.0]
 
 Key Variables
+
 ![image](https://github.com/user-attachments/assets/40029b72-0e48-4628-b2d5-aab154df9f39)
 
 
