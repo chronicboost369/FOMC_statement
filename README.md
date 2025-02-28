@@ -19,3 +19,15 @@ For the response variable, we calculate the one-day performance of QQQ, the NASD
 The algorithms under consideration are: 1. ridge regression 2. random forest 3.gradient boosting machine (GBM). 
 
 Ridge regression was selected from a range of parametric regression techniques because it effectively manages multicollinearity through shrinkage parameters. This is particularly useful since TF-IDF can generate a vast number of variables, and ridge regression helps by increasing bias to reduce variance, stabilizing the model. On the other hand, ensemble tree-based methods—random forest and GBM—were chosen for their ability to capture nonlinear relationships, which is critical given the limited exploratory data analysis (EDA) possible with text data to uncover links between explanatory variables (TF-IDF features) and the response variable (QQQ performance). Random forest excels at controlling variance, while GBM focuses on minimizing bias, offering complementary strengths. Comparing these two ensemble methods alongside ridge regression should provide valuable insights into the underlying relationships and enhance the project’s development.
+
+The overall structure of modelling is preprocessing the text data using TF-IDF then hyperparameter tunings are conducted using CV(cross validation) approach (SKlearn). Test RMSE is selected to compare the performance of models. Test RMSE is chosen as it has the same unit as the response variables thus making interpretability straightforward.
+
+### Ridge Regression
+Parameters
+  1.tfidf__ngram_range':  [(1, 3), (2, 5),(4,8)]
+  2.L2 penalty: [0.1, 1.0, 10.0]
+
+Key Variables
+![image](https://github.com/user-attachments/assets/40029b72-0e48-4628-b2d5-aab154df9f39)
+
+
