@@ -42,7 +42,6 @@ In the ridge regression model, I analyzed terms based on the magnitude of their 
 
 ### Random Forest
 
-
 Hypertuned Parameters and tested values:
 1. tfidf__ngram_range: [(1, 3), (2, 5),(4,8)]
 2. n_estimators: [50, 100]
@@ -56,9 +55,26 @@ Selected model:
 Test RMSE: 0.4882%
 
 Key Variables
-Key variables are chosen based on their importance, a metric that measures how much each variable reduces the model's errog. Surprisingly, the top five most important variables in the model are all tied to the Federal Reserve’s policies. These variables reflect the Fed’s positions on unemployment rates, economic development, and interest rate hikes. However, there’s a limitation to this approach: the importance measure in random forests doesn’t reveal the direction of the relationship between these variables and the response variable. Even with this limitation, these findings could be valuable as unemployment, economic growth, and rate hikes are major macroeconomic indicators. Keeping an eye on these factors could help predicting short-term market movements.
+Key variables are chosen based on their importance, a metric that measures how much each variable reduces the model's errog. Surprisingly, the top five most important variables in the model are all tied to the Federal Reserve’s policies. These variables reflect the Fed’s positions on unemployment rates and interest rate hikes. However, there’s a limitation to this approach: the importance measure in random forests doesn’t reveal the direction of the relationship between these variables and the response variable. Even with this limitation, these findings could be valuable as unemployment and rate hikes are major macroeconomic indicators. Keeping an eye on these factors could help predicting short-term market movements. Additionally, unlike Ridge regression, all 5 of these key variables are related to the economy.
 
-![image](https://github.com/user-attachments/assets/f15d7c52-c6a6-49b6-bacf-a81d66d5b6b9)
+![image](https://github.com/user-attachments/assets/dc076d38-51a1-4686-8bc6-6853f5519681)
+
+
+### GBM
+
+Hypertuned Parameters and tested values:
+1. tfidf__ngram_range: [(1, 3), (2, 5),(4,8)]
+2. n_estimators': [50, 100,200]
+3. learning_rate': [0.03,0.1 ,0.15]
+4. max_depth': [10,20,40]
+
+Selected model:
+1. tfidf__ngram_range: (2,5)
+2. n_estimators: 100
+3. max_depth: 10
+
+Test RMSE: 0.4882%
+
   
 
 
