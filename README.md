@@ -22,6 +22,9 @@ Ridge regression was selected from a range of parametric regression techniques b
 
 The overall structure of modelling is preprocessing the text data using TF-IDF then hyperparameter tunings are conducted using CV(cross validation) approach (SKlearn). Test RMSE is selected to compare the performance of models. Test RMSE is chosen as it has the same unit as the response variables thus making interpretability straightforward. Additionally, due to limited computing power, only a small subset of hyperparameters are tested for tuning purposes.
 
+
+## Result
+
 ### Ridge Regression
 
 Hypertuned Parameters and tested values:
@@ -70,10 +73,11 @@ Hypertuned Parameters and tested values:
 
 Selected model:
 1. tfidf__ngram_range: (2,5)
-2. n_estimators: 100
-3. max_depth: 10
+2. n_estimators: 50
+3. learning_rate: 0.03
+4. max_depth: 10
 
-Test RMSE: 0.4882%
+Test RMSE: 0.603%
 
   
 
