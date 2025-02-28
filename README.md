@@ -25,12 +25,12 @@ The overall structure of modelling is preprocessing the text data using TF-IDF t
 ### Ridge Regression
 
 Hypertuned Parameters and tested values:
-  1.tfidf__ngram_range:  [(1, 3), (2, 5),(4,8)]
-  2.L2 penalty: [0.1, 1.0, 10.0]
+1.tfidf__ngram_range:  [(1, 3), (2, 5),(4,8)]
+2.L2 penalty: [0.1, 1.0, 10.0]
 
 Selected model:
-  1. tfidf__ngram_range: (1,3)
-  2. L2 penalty: 10
+1. tfidf__ngram_range: (1,3)
+2. L2 penalty: 10
 
 Test RMSE:
   0.4929%
@@ -42,15 +42,16 @@ In the ridge regression model, I analyzed terms based on the magnitude of their 
 
 ### Random Forest
 
+
 Hypertuned Parameters and tested values:
-  1.tfidf__ngram_range: [(1, 3), (2, 5),(4,8)],
-  2.n_estimators: [50, 100],
-  3.max_depth: [10,20,40]
+1.tfidf__ngram_range: [(1, 3), (2, 5),(4,8)]
+2.n_estimators: [50, 100]
+3.max_depth: [10,20,40]
 
 Selected model:
-  1. tfidf__ngram_range: (2,5)
-  2. n_estimators: 100
-  3. max_depth: 10
+1. tfidf__ngram_range: (2,5)
+2. n_estimators: 100
+3. max_depth: 10
 
 Test RMSE: 0.4882%
 
