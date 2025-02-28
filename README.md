@@ -8,11 +8,11 @@ This project explores whether data from FOMC press releases can be harnessed to 
 
 ## Data
 
-For this data science project, we scraped data directly from the Federal Reserve website, covering the period from 2000 to 2025. Although the Fed typically conducts eight scheduled meetings annually, variations in URL formats across different batches of press releases limited our scrape to 81 documents. The collected data spans from April 2011 to January 2025, forming the foundation for our analysis.
+For this data science project, I scraped data directly from the Federal Reserve website, covering the period from 2000 to 2025. Although the Fed typically conducts eight scheduled meetings annually, variations in URL formats across different batches of press releases limited our scrape to 81 documents. The collected data spans from April 2011 to January 2025, forming the foundation for our analysis.
 
-To preprocess the text data, we first remove stop words and apply the bag-of-words method to identify the most frequently used terms across the FOMC press releases. During this step, words like "forward," "thank," and "would" are filtered out—though common, they carry little meaningful insight for our analysis. Next, we use TF-IDF (Term Frequency-Inverse Document Frequency) to convert the text into numerical values. This approach is ideal because it downweights terms that appear frequently across all press releases, emphasizing words that are more distinctive and informative for specific documents.
+To preprocess the text data, I first remove stop words and apply the bag-of-words method to identify the most frequently used terms across the FOMC press releases. During this step, words like "forward," "thank," and "would" are filtered out—though common, they carry little meaningful insight for our analysis. Next, we use TF-IDF (Term Frequency-Inverse Document Frequency) to convert the text into numerical values. This approach is ideal because it downweights terms that appear frequently across all press releases, emphasizing words that are more distinctive and informative for specific documents.
 
-For the response variable, we calculate the one-day performance of QQQ, the NASDAQ 100 ETF, defined as the ratio of the closing price one day after the FOMC press release to the closing price on the release date itself. We chose QQQ for its simplicity and near-perfect correlation with the NASDAQ 100 index. The NASDAQ 100 is preferred over the S&P 500 or Dow Jones because its constituent stocks are more responsive to shifts in economic conditions. Focusing on one-day performance helps isolate the market’s reaction to the FOMC statement, minimizing interference from unrelated news events that might coincidentally occur around the same time.
+For the response variable, I calculate the one-day performance of QQQ, the NASDAQ 100 ETF, defined as the ratio of the closing price one day after the FOMC press release to the closing price on the release date itself. I chose QQQ for its simplicity and near-perfect correlation with the NASDAQ 100 index. The NASDAQ 100 is preferred over the S&P 500 or Dow Jones because its constituent stocks are more responsive to shifts in economic conditions. Focusing on one-day performance helps isolate the market’s reaction to the FOMC statement, minimizing interference from unrelated news events that might coincidentally occur around the same time.
 
 ## Modelling
 
@@ -23,21 +23,42 @@ Ridge regression was selected from a range of parametric regression techniques b
 The overall structure of modelling is preprocessing the text data using TF-IDF then hyperparameter tunings are conducted using CV(cross validation) approach (SKlearn). Test RMSE is selected to compare the performance of models. Test RMSE is chosen as it has the same unit as the response variables thus making interpretability straightforward. Additionally, due to limited computing power, only a small subset of hyperparameters are tested for tuning purposes.
 
 ### Ridge Regression
+
 Hypertuned Parameters and tested values:
-  1.tfidf__ngram_range':  [(1, 3), (2, 5),(4,8)]
+  1.tfidf__ngram_range:  [(1, 3), (2, 5),(4,8)]
   2.L2 penalty: [0.1, 1.0, 10.0]
 
 Selected model:
   1. tfidf__ngram_range: (1,3)
   2. L2 penalty: 10
 
-Key Variables
+Test RMSE:
+  0.4929%
 
-Key variables are selected by the magnitude of coefficients separating the signs. The top 5 positive variables doesn't seem to contain any meaningful insight to Fed's nuances in the statement that could potentially affect the market.
-On the other hand, 
+Key Variables
+In the ridge regression model, I analyzed terms based on the magnitude of their coefficients, distinguishing between positive and negative values. The five terms with the largest positive coefficients do not appear to reveal significant nuances in the Federal Reserve's statements that could influence market behavior. In contrast, the two of five terms with the largest negative coefficients, such as "inflation" and "rate," are closely tied to the Fed’s policy language. However, these terms alone do not fully clarify the Fed’s implications, as their market impact—whether bullish or bearish—hinges on the context provided by surrounding words in the statement. As a result, it is difficult to confirm that the ridge regression model has effectively pinpointed the key terms driving short-term market movements.
 
 ![image](https://github.com/user-attachments/assets/40029b72-0e48-4628-b2d5-aab154df9f39)
 
+### Random Forest
+
+Hypertuned Parameters and tested values:
+  1.tfidf__ngram_range: [(1, 3), (2, 5),(4,8)],
+  2.n_estimators: [50, 100],
+  3.max_depth: [10,20,40]
+
+Selected model:
+  1. tfidf__ngram_range: (2,5)
+  2. n_estimators: 100
+  3. max_depth: 10
+
+Test RMSE: 0.4882%
+
+Key Variables
+Key variables are chosen based on their importance, a metric that measures how much each variable reduces the model's errog. Surprisingly, the top five most important variables in the model are all tied to the Federal Reserve’s policies. These variables reflect the Fed’s positions on unemployment rates, economic development, and interest rate hikes. However, there’s a limitation to this approach: the importance measure in random forests doesn’t reveal the direction of the relationship between these variables and the response variable. Even with this limitation, these findings could be valuable as unemployment, economic growth, and rate hikes are major macroeconomic indicators. Keeping an eye on these factors could help predicting short-term market movements.
+
+![image](https://github.com/user-attachments/assets/f15d7c52-c6a6-49b6-bacf-a81d66d5b6b9)
+  
 
 
 
