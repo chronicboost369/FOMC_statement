@@ -58,9 +58,9 @@ Selected model:
 Test RMSE: 0.4882%
 
 Key Variables
-Key variables are chosen based on their importance, a metric that measures how much each variable reduces the model's errog. Surprisingly, the top five most important variables in the model are all tied to the Federal Reserve’s policies. These variables reflect the Fed’s positions on unemployment rates and interest rate hikes. However, there’s a limitation to this approach: the importance measure in random forests doesn’t reveal the direction of the relationship between these variables and the response variable. Even with this limitation, these findings could be valuable as unemployment and rate hikes are major macroeconomic indicators. Keeping an eye on these factors could help predicting short-term market movements. Additionally, unlike Ridge regression, all 5 of these key variables are related to the economy.
+Key variables are chosen based on their importance, a metric that measures how much each variable reduces the model's errog. Surprisingly, the top five most important variables in the model are all tied to the Federal Reserve’s policies. These variables reflect the Fed’s positions on unemployment rates, economic development, and interest rate hikes. However, there’s a limitation to this approach: the importance measure in random forests doesn’t reveal the direction of the relationship between these variables and the response variable. Even with this limitation, these findings could be valuable as these are major macroeconomic indicators. Keeping an eye on these factors could help predicting short-term market movements. Additionally, unlike Ridge regression, all 5 of these key variables are related to the economy.
 
-![image](https://github.com/user-attachments/assets/dc076d38-51a1-4686-8bc6-6853f5519681)
+![image](https://github.com/user-attachments/assets/afdb2032-54c9-4ad2-b4e1-ae9b8c62692c)
 
 
 ### GBM
@@ -78,6 +78,12 @@ Selected model:
 4. max_depth: 10
 
 Test RMSE: 0.603%
+
+Key Variables
+Just like RF, key variables are chosen with importance. Similiar to RF, key variables are related to the interest rate and unemployment rate with much greater magnitude. However, because the test performance is far worse it's hard to give credit to findings from this model as this could be a result of overfitting.
+
+![image](https://github.com/user-attachments/assets/29575c22-1a87-4fac-b8a0-eccd8c025037)
+
 
   
 
